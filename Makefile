@@ -3,6 +3,7 @@ SRCS		=	so_long.c \
 				parsing.c \
 				error.c \
 				failsafe_fct.c \
+				window.c \
 
 DEBUG_SRCS	=	debug.c \
 

@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 07:24:47 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/06 20:30:15 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/11 22:38:44 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ void	free_map_exit(char **map, char *msg)
 		free(map[i]);
 	free(map);
 	exit_msg(msg);
+}
+
+int	close_window(void)
+{
+	exit(0);
+	return (0);
 }

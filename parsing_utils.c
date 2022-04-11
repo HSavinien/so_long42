@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:02:56 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 16:38:11 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/11 22:15:59 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	check_map_name(char	*name)
 //check that the map name is a non-empty string folowed by .ber
 {
 	char	*cut_name;
+
 	cut_name = ft_strrchr(name, '/') + 1;
 	if (cut_name - 1)
 		name = cut_name;
