@@ -6,13 +6,13 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:23:39 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 13:07:51 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/11 22:17:18 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		check_limit_line(char *line)
+int	check_limit_line(char *line)
 //check that the first and last line of the map are just a sery of 1
 {
 	int	i;
@@ -33,17 +33,14 @@ char	*checkline(char	*line, t_map *map)
 	int	i;
 
 	if (ft_strlen(line) - 1 != (size_t) map->nb_tiles_x)
-	{
 		return ("error : map must be rectangular");
-	}
 	if (line[0] != '1' || line[map->nb_tiles_x - 1] != '1')
 		return ("error : map must be closed");
 	i = 0;
 	while (line[i ++])
 	{
 		if (line[i] == '0' || line[i] == '1' || line[i] == '\n' || !line[i])
-		{
-		}
+			(void) line;
 		else if (line[i] == 'P')
 			map->nb_player ++;
 		else if (line[i] == 'C')
@@ -68,7 +65,7 @@ void	fill_map(int map_fd, t_map *map)
 	i = 0;
 	while (line)
 	{
-		er_msg=checkline(line, map);
+		er_msg = checkline(line, map);
 		if (er_msg)
 			free_map_exit(map->grid, er_msg);
 		map->grid[i] = line;
@@ -76,7 +73,6 @@ void	fill_map(int map_fd, t_map *map)
 		i ++;
 	}
 }
-
 
 void	check_object(t_map *map)
 {
@@ -106,8 +102,8 @@ t_map	*parsing(char *map_name)
 	map->grid = ft_calloc(sizeof(char *), map->nb_tiles_y + 1000);
 	if (!map->grid)
 		exit_msg("error : memory allocation failed");
-	map_fd = open(map_name, O_RDONLY);
-	if(map_fd < 0)
+	map_fd = open(map_name, O_RDONLY, O_CLOEXEC);
+	if (map_fd < 0 || errno == 21)
 		exit_msg("error : could not open file");
 	line = fs_get_next_line(map_fd);
 	map->nb_tiles_x = check_limit_line(line);

@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:02:56 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 14:19:12 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:38:11 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_map	*map_init(void)
 
 	map = malloc(sizeof (t_map));
 	map->nb_tiles_x = 1;
-	map->nb_tiles_y = 5;
+	map->nb_tiles_y = 1;
 	map->nb_colectible = 0;
 	map->nb_exit = 0;
 	map->nb_enemy = 0;
