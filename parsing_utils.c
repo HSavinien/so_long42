@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:02:56 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 22:15:59 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:49:23 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ t_map	*map_init(void)
 	map->nb_exit = 0;
 	map->nb_enemy = 0;
 	map->nb_player = 0;
+	map->p_posx = 0;
+	map->p_posy = 0;
 	return (map);
 }

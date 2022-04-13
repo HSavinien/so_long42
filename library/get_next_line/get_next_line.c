@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 04:07:17 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/08 18:30:37 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/12 14:28:10 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	line = ft_strdup(leftover);
+	line = gnl_strdup(leftover);
 	if (got_end_of_line(leftover))
 	{
 		leftover = save_leftover(line, leftover);
 		return (line);
 	}
-	ft_memset(buf, 0, BUFFER_SIZE + 1);
+	gnl_memset(buf, 0, BUFFER_SIZE + 1);
 	read_ret = read(fd, buf, BUFFER_SIZE);
-	if (read_ret <= 0 && !ft_strlen(leftover))
+	if (read_ret <= 0 && !gnl_strlen(leftover))
 		return (do_free(line));
 	while (!got_end_of_line(buf) && read_ret == BUFFER_SIZE)
 	{
 		line = save_buf(line, buf, read_ret);
-		ft_memset(buf, '\0', BUFFER_SIZE);
+		gnl_memset(buf, '\0', BUFFER_SIZE);
 		read_ret = read(fd, buf, BUFFER_SIZE);
 	}
 	leftover = save_leftover(buf, leftover);
@@ -69,7 +69,7 @@ char	*save_buf(char *base_str, char *buf, int read_ret)
 	int		base_size;
 	int		buf_size;
 
-	base_size = ft_strlen(base_str);
+	base_size = gnl_strlen(base_str);
 	buf_size = 0;
 	while (buf[buf_size] && buf[buf_size] != '\n' && read_ret--)
 		buf_size ++;
@@ -78,8 +78,8 @@ char	*save_buf(char *base_str, char *buf, int read_ret)
 	new_str = malloc(base_size + buf_size + 1);
 	if (!new_str)
 		return (NULL);
-	ft_strlcpy(new_str, base_str, base_size + 1);
-	ft_strlcpy(new_str + base_size, buf, buf_size + 1);
+	gnl_strlcpy(new_str, base_str, base_size + 1);
+	gnl_strlcpy(new_str + base_size, buf, buf_size + 1);
 	free(base_str);
 	return (new_str);
 }
@@ -96,7 +96,7 @@ char	*save_leftover(char *str, char *old_leftover)
 		i++;
 	if (!str[i])
 		return (NULL);
-	leftover = ft_strdup(str + i + 1);
+	leftover = gnl_strdup(str + i + 1);
 	str[i + 1] = '\0';
 	if (!*leftover)
 	{

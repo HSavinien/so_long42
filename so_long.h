@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 22:39:10 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:07:45 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,30 @@
 # include "library/libft/libft.h"
 # include "library/printf/libftprintf.h"
 # include "library/get_next_line/get_next_line.h"
+# include "library/key_code.h"
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdlib.h>
-#include <sys/errno.h>
+# include <sys/errno.h>
 # include <stdio.h>//===========================================================debug
-
 
 //macros    ----------------------------------------------------------    macros
 
 # define TILE_SIZE 
 
 //struct	----------------------------------------------------------    struct
+
+typedef struct s_map {
+	int		nb_tiles_x;
+	int		nb_tiles_y;
+	int		nb_colectible;
+	int		nb_exit;
+	int		nb_enemy;
+	int		nb_player;
+	char	**grid;
+	int		p_posx;
+	int		p_posy;
+}	t_map;
 
 typedef struct s_sprites {
 	void	*player;
@@ -46,53 +58,51 @@ typedef struct s_mlx {
 	void		*serv;
 	void		*win;
 	t_sprites	*sprites;
+	t_map		*map;
 	int			size_x;
 	int			size_y;
 	int			nb_moves;
 }	t_mlx;
 
-typedef struct s_map {
-	int		nb_tiles_x;
-	int		nb_tiles_y;
-	int		nb_colectible;
-	int		nb_exit;
-	int		nb_enemy;
-	int		nb_player;
-	char	**grid;
-}	t_map;
-
 //parsing    --------------------------------------------------------    parsing
 
-t_map	*parsing(char *map_name);
-int		check_limit_line(char *line);
-char	*checkline(char *line, t_map *map);
-void	fill_map(int map_fd, t_map *map);
-void	check_object(t_map *map);
+t_map		*parsing(char *map_name);
+int			check_limit_line(char *line);
+char		*checkline(char *line, t_map *map);
+void		fill_map(int map_fd, t_map *map);
+void		check_object(t_map *map);
 
-int		count_line(char *file);
-void	check_map_name(char *name);
-t_map	*map_init(void);
+int			count_line(char *file);
+void		check_map_name(char *name);
+t_map		*map_init(void);
 
 //display    --------------------------------------------------------    display
 
-void	put_tile(t_mlx, char tile, int x, int y);
-void	print_map(t_mlx *mlx, t_map *map);
+void		put_tile(t_mlx mlx, char tile, int x, int y);
+void		print_map(t_mlx *mlx, t_map *map);
 t_sprites	*load_sprites(t_mlx *mlx);
-t_mlx	*init_window(t_map *map);
-void	manage_window(t_map *map);
+t_mlx		*init_window(t_map *map);
+int			keyboard_event(int key, t_mlx *mlx);
 
+//player movement    ----------------------------------------    player movement
 
-//error    ------------------------------------------------------------    error
-void	exit_msg(char	*msg);
-void	free_map_exit(char	**map, char*msg);
-int	close_window(void);
+int	player_moveto(int dst_x, int dst_y, t_mlx *mlx, t_map *map);
+int	find_player(t_map *map);
 
-//failsafe    ------------------------------------------------------    failsafe
+//enemy_movement    ------------------------------------------    enemy movement
 
-char	*fs_get_next_line(int fd);
+void	move_enemy();
+int		enemy_moveto();
 
-//debug    ------------------------------------------------------------    debug
-void	display_map(t_map *map);
-void	display_map_color(t_map *map);
-char	*get_next_line(int fd);
+//exit functions    ------------------------------------------    exit functions
+void		exit_msg(char	*msg);
+void		free_map_exit(char	**map, char*msg);
+int			close_window(void);
+int			game_over(t_mlx *mlx);
+int			winning(t_mlx *mlx);
+
+//shell output    ----------------------------------------------    shell output
+void		debug_display_map(t_map *map);
+void		print_map_shell(t_map *map);
+void		print_tile_shell(int i, int j, t_map *map);
 #endif

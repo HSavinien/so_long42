@@ -64,11 +64,11 @@ NAME	= libft.a
 
 #rules
 
+all:		${NAME}
+
 ${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
 		ranlib ${NAME}
-
-all:		${NAME}
 
 clean:
 		rm -f ${SOBJS}

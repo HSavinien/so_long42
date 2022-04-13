@@ -1,33 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   failsafe_fct.c                                     :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 18:34:06 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/08 21:43:52 by tmongell         ###   ########.fr       */
+/*   Created: 2022/04/12 17:59:17 by tmongell          #+#    #+#             */
+/*   Updated: 2022/04/12 17:59:20 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* this file exist for one reason : for some reason, my gnl may return weird 
- * value in parsing. if other function need failsafing, I'll add them too */
-
-char	*fs_get_next_line(int fd)
+void	exit_msg(char	*msg)
 {
-	char	*line;
-	char	*fs_line;
-	int		i;
+	ft_printf("%s\n", msg);
+	exit(1);
+}
 
-	line = get_next_line(fd);
-	if (!line)
-		return (NULL);
+void	free_map_exit(char **map, char *msg)
+{
+	int	i;
+
 	i = 0;
-	while (line[i] < '\0')
-		i ++;
-	fs_line = ft_strdup(line + i);
-	free (line);
-	return (fs_line);
+	while (map[i ++])
+		free(map[i]);
+	free(map);
+	exit_msg(msg);
+}
+
+int	close_window(void)
+{
+	exit(0);
+	return (0);
+}
+
+int	game_over(t_mlx *mlx)
+//placeholder
+{
+	(void) mlx;
+	ft_printf("you loose!\n");
+	exit(0);
+}
+
+int	winning(t_mlx *mlx)
+//placeholder
+{
+	(void) mlx;
+	ft_printf("you win!!!\n");
+	exit(0);
 }

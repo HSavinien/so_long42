@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:23:39 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 22:17:18 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:20:52 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	fill_map(int map_fd, t_map *map)
 		if (er_msg)
 			free_map_exit(map->grid, er_msg);
 		map->grid[i] = line;
-		line = fs_get_next_line(map_fd);
+		line = get_next_line(map_fd);
 		i ++;
 	}
 }
@@ -89,7 +89,6 @@ void	check_object(t_map *map)
 }
 
 t_map	*parsing(char *map_name)
-//read the map file, check it's a valid map, return an exploitable map structure
 {
 	t_map	*map;
 	int		map_fd;
@@ -105,12 +104,13 @@ t_map	*parsing(char *map_name)
 	map_fd = open(map_name, O_RDONLY, O_CLOEXEC);
 	if (map_fd < 0 || errno == 21)
 		exit_msg("error : could not open file");
-	line = fs_get_next_line(map_fd);
+	line = get_next_line(map_fd);
 	map->nb_tiles_x = check_limit_line(line);
 	map->grid[0] = line;
 	fill_map(map_fd, map);
 	check_object(map);
 	check_limit_line(map->grid[map->nb_tiles_y - 1]);
 	close(map_fd);
+	find_player(map);
 	return (map);
 }

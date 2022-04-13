@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   mlx_event.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 07:24:47 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/11 22:38:44 by tmongell         ###   ########.fr       */
+/*   Created: 2022/03/19 19:31:04 by tmongell          #+#    #+#             */
+/*   Updated: 2022/03/19 22:00:02 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+//this library creat macro to use mlx_event code in a more readable way.
 
-void	exit_msg(char	*msg)
-{
-	ft_printf("%s\n", msg);
-	exit(1);
-}
+#ifndef MLX_EVENT_H
+# define MLX_EVENT_H
 
-void	free_map_exit(char **map, char *msg)
-{
-	int	i;
+# define EVENT_KEY_PRESS 2
+# define EVENT_KEY_RELEASE 3
+# define EVENT_BUTTON_PRESS 4
+# define EVENT_BUTON_RELEASE 5
+# define EVENT_MOTION 6
+# define EVENT_WIN_CLOSE 17
 
-	i = 0;
-	while (map[i ++])
-		free(map[i]);
-	free(map);
-	exit_msg(msg);
-}
-
-int	close_window(void)
-{
-	exit(0);
-	return (0);
-}
+#endif
