@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:33:27 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/12 20:23:13 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/15 18:35:33 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	show_nb_moves(int nb_moves, t_mlx *mlx)
 
 	ft_printf("you did %d moves\n", nb_moves);
 	nb_moves_str = ft_itoa(mlx->nb_moves);
-	mlx_string_put(mlx->serv, mlx->win, 10, 10, 4718847, nb_moves_str);
+	mlx_string_put(mlx->serv, mlx->win, 15, 15, 4718847, nb_moves_str);
 	free(nb_moves_str);
 }
 
@@ -71,8 +71,8 @@ int	player_moveto(int dst_x, int dst_y, t_mlx *mlx, t_map *map)
 	else if (map->grid[dst_y][dst_x] == 'C')
 		map->nb_colectible --;
 	update_map(map, mlx, dst_x, dst_y);
-//	move_enemy(mlx, map);
-	print_map(mlx, map);
+	move_enemy(mlx, map);
+	print_map_shell(map);
 	show_nb_moves(mlx->nb_moves, mlx);
 	return (mlx->nb_moves);
 }

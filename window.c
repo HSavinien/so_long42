@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:37:34 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/12 19:54:00 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/15 20:06:05 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ void	put_tile(t_mlx mlx, char tile, int x, int y)
 		mlx_put_image_to_window(mlx.serv, mlx.win, mlx.sprites->wall, x, y);
 }
 
-void	print_map(t_mlx *mlx, t_map *map)
+int	print_map(t_mlx *mlx)
 {
 	int	i;
 	int	j;
 
 	mlx_clear_window(mlx->serv, mlx->win);
 	i = 0;
-	printf("\n ");
-	while (map->grid[i])
+	while (mlx->map->grid[i])
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (mlx->map->grid[i][j])
 		{
-			put_tile(*mlx, map->grid[i][j],
+			put_tile(*mlx, mlx->map->grid[i][j],
 				j * mlx->sprites->s_tiles_x, i * mlx->sprites->s_tiles_y);
 			j ++;
 		}
 		i ++;
 	}
-	print_map_shell(map);
+//	print_map_shell(mlx->map);
+	return (0);
 }
 
 t_sprites	*load_sprites(t_mlx *mlx)

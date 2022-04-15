@@ -6,6 +6,7 @@ SRCS		=	so_long.c \
 				shell_output.c \
 				player_movement.c \
 				event.c \
+				enemy_movement.c \
 
 OBJS		=	${SRCS:%.c=%.o}
 
