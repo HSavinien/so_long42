@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:30:59 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 17:02:16 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 19:49:11 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	print_map_shell(t_map	*map)
 	int	j;
 
 	i = 0;
-	system("clear");
 	ft_printf("\n");
 	while (map->grid[i])
 	{
