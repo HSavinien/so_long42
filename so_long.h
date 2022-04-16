@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/15 20:06:07 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:06:00 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,15 @@ int			keyboard_event(int key, t_mlx *mlx);
 
 //player movement    ----------------------------------------    player movement
 
-int	player_moveto(int dst_x, int dst_y, t_mlx *mlx, t_map *map);
-int	find_player(t_map *map);
+int		player_moveto(int dst_x, int dst_y, t_mlx *mlx, t_map *map);
+int		find_player(t_map *map);
+void	show_nb_moves(int nb_moves, t_mlx *mlx);
 
 //enemy_movement    ------------------------------------------    enemy movement
 
-void	move_enemy(t_mlx *mlx, t_map *map);
-void	enemy_move_from(t_map *map, int x, int y, t_mlx *mlx);
+void	move_enemy(t_map *map);
+void	enemy_move_from(t_map *map, int x, int y);
+void	clean_map(t_map *map);
 
 //exit functions    ------------------------------------------    exit functions
 void		exit_msg(char	*msg);

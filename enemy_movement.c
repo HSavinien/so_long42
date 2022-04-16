@@ -6,13 +6,13 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:43:09 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/15 20:14:31 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:05:05 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_enemy(t_mlx *mlx, t_map *map)
+void	move_enemy(t_map *map)
 {
 	int	y;
 	int	x;
@@ -26,14 +26,15 @@ void	move_enemy(t_mlx *mlx, t_map *map)
 		{
 			i = 10;
 			while(map->grid[y][x] == 'K' && i--)
-				enemy_move_from(map, x, y, mlx);
+				enemy_move_from(map, x, y);
 			x ++;
 		}
 		y ++;
 	}
+	clean_map(map);
 }
 
-void	enemy_move_from(t_map *map, int x, int y, t_mlx *mlx)
+void	enemy_move_from(t_map *map, int x, int y)
 {
 	int	seed;
 	int	dst_x;
@@ -50,11 +51,29 @@ void	enemy_move_from(t_map *map, int x, int y, t_mlx *mlx)
 		dst_y ++;
 	else if (seed == 4)
 		dst_x ++;
-	if (map->grid[dst_y][dst_x] == 'P')
-		game_over(mlx);
 	if (map->grid[dst_y][dst_x] == '0')
 	{
-		map->grid[dst_y][dst_x] = 'K';
+		map->grid[dst_y][dst_x] = 'k';
 		map->grid[y][x] = '0';
 	}
 }
+
+void	clean_map(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map->grid[y])
+	{
+		x = 0;
+		while (map->grid[y][x])
+		{
+			if (map->grid[y][x] == 'k')
+				map->grid[y][x] = 'K';
+			x ++;
+		}
+		y ++;
+	}
+}
+

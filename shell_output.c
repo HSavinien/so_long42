@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:30:59 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/15 20:13:38 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:02:16 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_map_shell(t_map	*map)
 
 	i = 0;
 	system("clear");
-	ft_printf("\n  ");
+	ft_printf("\n");
 	while (map->grid[i])
 	{
 		j = 0;
@@ -54,18 +54,17 @@ void	print_map_shell(t_map	*map)
 void	print_tile_shell(int i, int j, t_map *map)
 {
 	if (map->grid[i][j] == '1')
-		printf("\033[47m");
+		printf("\033[47m  ");
 	else if (map->grid[i][j] == '0')
-		printf("\033[40m");
+		printf("\033[40m  ");
 	else if (map->grid[i][j] == 'P')
-		printf("\033[34m");
+		printf("\033[44m  ");
 	else if (map->grid[i][j] == 'C')
-		printf("\033[42m");
+		printf("\033[42m  ");
 	else if (map->grid[i][j] == 'E')
-		printf("\033[43m");
+		printf("\033[43m  ");
 	else if (map->grid[i][j] == 'K')
-		printf("\033[41m");
+		printf("\033[41m  ");
 	else if (map->grid[i][j] == '\n')
 		printf("\033[0m\n");
-	printf("  ");
 }

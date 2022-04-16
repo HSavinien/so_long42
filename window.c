@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:37:34 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/15 20:06:05 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/15 20:26:03 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	print_map(t_mlx *mlx)
 		}
 		i ++;
 	}
-//	print_map_shell(mlx->map);
+	show_nb_moves(mlx->nb_moves, mlx);
 	return (0);
 }
 
