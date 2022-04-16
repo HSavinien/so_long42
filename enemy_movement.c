@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:43:09 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 17:05:05 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 18:27:53 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	move_enemy(t_map *map)
 {
 	int	y;
 	int	x;
-	int i;
+	int	i;
 
 	y = 0;
-	while(map->grid[y])
+	while (map->grid[y])
 	{
 		x = 0;
-		while(map->grid[y][x])
+		while (map->grid[y][x])
 		{
 			i = 10;
-			while(map->grid[y][x] == 'K' && i--)
+			while (map->grid[y][x] == 'K' && i--)
 				enemy_move_from(map, x, y);
 			x ++;
 		}
@@ -38,7 +38,7 @@ void	enemy_move_from(t_map *map, int x, int y)
 {
 	int	seed;
 	int	dst_x;
-	int dst_y;
+	int	dst_y;
 
 	dst_x = x;
 	dst_y = y;
@@ -76,4 +76,3 @@ void	clean_map(t_map *map)
 		y ++;
 	}
 }
-

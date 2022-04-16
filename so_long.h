@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 18:01:02 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 18:52:27 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/errno.h>
-# include <stdio.h>//===========================================================debug
 
 //macros    ----------------------------------------------------------    macros
 
@@ -51,14 +50,14 @@ typedef struct s_sprites {
 	void	*enemy;
 	void	*wall;
 	void	*ground;
-	int		s_tiles_x;
-	int		s_tiles_y;
+	int		s_tile_x;
+	int		s_tile_y;
 }	t_sprites;
 
 typedef struct s_mlx {
 	void		*serv;
 	void		*win;
-	t_sprites	*sprites;
+	t_sprites	*sprite;
 	t_map		*map;
 	int			size_x;
 	int			size_y;
@@ -79,7 +78,7 @@ t_map		*map_init(void);
 
 //display    --------------------------------------------------------    display
 
-void		put_tile(t_mlx mlx, char tile,int nb_call , int x, int y);
+void		put_tile(t_mlx *mlx, int nb_call, int x, int y);
 int			print_map(t_mlx *mlx);
 t_sprites	*load_sprites(t_mlx *mlx);
 t_mlx		*init_window(t_map *map);
@@ -87,15 +86,15 @@ int			keyboard_event(int key, t_mlx *mlx);
 
 //player movement    ----------------------------------------    player movement
 
-int		player_moveto(int dst_x, int dst_y, t_mlx *mlx, t_map *map);
-int		find_player(t_map *map);
-void	show_nb_moves(int nb_moves, t_mlx *mlx);
+int			player_moveto(int dst_x, int dst_y, t_mlx *mlx, t_map *map);
+int			find_player(t_map *map);
+void		show_nb_moves(int nb_moves, t_mlx *mlx);
 
 //enemy_movement    ------------------------------------------    enemy movement
 
-void	move_enemy(t_map *map);
-void	enemy_move_from(t_map *map, int x, int y);
-void	clean_map(t_map *map);
+void		move_enemy(t_map *map);
+void		enemy_move_from(t_map *map, int x, int y);
+void		clean_map(t_map *map);
 
 //exit functions    ------------------------------------------    exit functions
 void		exit_msg(char	*msg);

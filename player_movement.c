@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:33:27 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 17:05:22 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 18:29:31 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	find_player(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map->grid[i])
@@ -27,7 +27,7 @@ int	find_player(t_map *map)
 			{
 				map->p_posx = j;
 				map->p_posy = i;
-				return(1);
+				return (1);
 			}
 			j ++;
 		}
