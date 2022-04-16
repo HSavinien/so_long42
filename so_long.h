@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 17:06:00 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 18:01:02 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct s_map {
 
 typedef struct s_sprites {
 	void	*player;
-	void	*collect;
+	void	*item;
+	void	*item1;
 	void	*exit;
 	void	*enemy;
 	void	*wall;
@@ -78,7 +79,7 @@ t_map		*map_init(void);
 
 //display    --------------------------------------------------------    display
 
-void		put_tile(t_mlx mlx, char tile, int x, int y);
+void		put_tile(t_mlx mlx, char tile,int nb_call , int x, int y);
 int			print_map(t_mlx *mlx);
 t_sprites	*load_sprites(t_mlx *mlx);
 t_mlx		*init_window(t_map *map);
