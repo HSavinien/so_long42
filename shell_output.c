@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:30:59 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 19:49:11 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/16 19:52:10 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ void	print_map_shell(t_map	*map)
 		}
 		i ++;
 	}
-	printf("\033[0m\n");
+	ft_printf("\033[0m\n");
 }
 
 void	print_tile_shell(int i, int j, t_map *map)
 {
 	if (map->grid[i][j] == '1')
-		printf("\033[47m  ");
+		ft_printf("\033[47m  ");
 	else if (map->grid[i][j] == '0')
-		printf("\033[40m  ");
+		ft_printf("\033[40m  ");
 	else if (map->grid[i][j] == 'P')
-		printf("\033[44m  ");
+		ft_printf("\033[44m  ");
 	else if (map->grid[i][j] == 'C')
-		printf("\033[42m  ");
+		ft_printf("\033[42m  ");
 	else if (map->grid[i][j] == 'E')
-		printf("\033[43m  ");
+		ft_printf("\033[43m  ");
 	else if (map->grid[i][j] == 'K')
-		printf("\033[41m  ");
+		ft_printf("\033[41m  ");
 	else if (map->grid[i][j] == '\n')
-		printf("\033[0m\n");
+		ft_printf("\033[0m\n");
 }
