@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 18:52:27 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:12:21 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void		check_object(t_map *map);
 int			count_line(char *file);
 void		check_map_name(char *name);
 t_map		*map_init(void);
+char		*handle_eol(char *line);
 
 //display    --------------------------------------------------------    display
 

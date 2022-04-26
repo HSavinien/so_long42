@@ -6,11 +6,12 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:23:39 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/12 20:20:52 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:17:27 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 int	check_limit_line(char *line)
 //check that the first and last line of the map are just a sery of 1
@@ -18,6 +19,7 @@ int	check_limit_line(char *line)
 	int	i;
 
 	i = 0;
+	line = handle_eol(line);
 	while (line[i] == '1')
 		i ++;
 	if (line[i] != '\n')
@@ -32,6 +34,7 @@ char	*checkline(char	*line, t_map *map)
 {
 	int	i;
 
+	line = handle_eol(line);
 	if (ft_strlen(line) - 1 != (size_t) map->nb_tiles_x)
 		return ("error : map must be rectangular");
 	if (line[0] != '1' || line[map->nb_tiles_x - 1] != '1')
@@ -98,6 +101,8 @@ t_map	*parsing(char *map_name)
 	line = NULL;
 	check_map_name(map_name);
 	map->nb_tiles_y = count_line(map_name);
+	if (!map->nb_tiles_y)
+		exit_msg("error : map is empty");
 	map->grid = ft_calloc(sizeof(char *), map->nb_tiles_y + 1000);
 	if (!map->grid)
 		exit_msg("error : memory allocation failed");
@@ -112,5 +117,6 @@ t_map	*parsing(char *map_name)
 	check_limit_line(map->grid[map->nb_tiles_y - 1]);
 	close(map_fd);
 	find_player(map);
+	printf("\n\n");//================debug
 	return (map);
 }
