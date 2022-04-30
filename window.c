@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:37:34 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 18:57:13 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/30 19:35:10 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define ENEMY "sprites/enemy.xpm"
 #define WALL "sprites/wall.xpm"
 #define FLOOR "sprites/ground.xpm"
-#define PERIOD 10
+#define PERIOD 50
 
 void	put_tile(t_mlx *mlx, int nb_call, int x, int y)
 {

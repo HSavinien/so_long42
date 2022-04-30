@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:33:27 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/16 18:29:31 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/04/30 19:51:51 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	show_nb_moves(int nb_moves, t_mlx *mlx)
 	char	*nb_moves_str;
 
 	nb_moves_str = ft_itoa(nb_moves);
-	mlx_string_put(mlx->serv, mlx->win, 20, 20, 4718847, nb_moves_str);
+	mlx_string_put(mlx->serv, mlx->win, 40, 30, 12779520, nb_moves_str);
 	free(nb_moves_str);
 }
 
