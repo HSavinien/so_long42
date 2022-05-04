@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:59:17 by tmongell          #+#    #+#             */
-/*   Updated: 2022/05/04 18:17:20 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:00:03 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	game_over(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->serv, mlx->win, img, pos_x, pos_y);
 	ft_printf("you loose!\n");
 	mlx_loop_hook(mlx->serv, NULL, mlx);
+	mlx_key_hook(mlx->win, end_of_game, mlx);
 	return (0);
 }
 
@@ -66,5 +67,6 @@ int	winning(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->serv, mlx->win, img, pos_x, pos_y);
 	ft_printf("you win!\n");
 	mlx_loop_hook(mlx->serv, NULL, mlx);
+	mlx_key_hook(mlx->win, end_of_game, mlx);
 	return (0);
 }

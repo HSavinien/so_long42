@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 18:02:51 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/12 19:56:10 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:07:45 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,13 @@ int	keyboard_event(int key, t_mlx *mlx)
 	}
 	else
 		return (0);
+	return (0);
+}
+
+int	end_of_game(int key, t_mlx *mlx)
+{
+	if (key == KEY_ESC || key == KEY_Q)
+		return (close_window());
+	(void) mlx;
 	return (0);
 }

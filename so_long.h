@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/26 16:12:21 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:59:12 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int			print_map(t_mlx *mlx);
 t_sprites	*load_sprites(t_mlx *mlx);
 t_mlx		*init_window(t_map *map);
 int			keyboard_event(int key, t_mlx *mlx);
+int			end_of_game(int key, t_mlx *mlx);
 
 //player movement    ----------------------------------------    player movement
 
