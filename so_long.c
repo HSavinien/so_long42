@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:52:03 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/15 14:52:11 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:31:33 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_printf("arguments error\nusage : %s <map.ber>\n", av[0]));
+	if (ft_strcmp(av[0], "./so_long"))
+		exit_msg("error : current directory isn't program directory");
 	map = parsing(av[1]);
 	mlx = init_window(map);
 	print_map_shell(map);
