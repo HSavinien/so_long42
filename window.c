@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:37:34 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/30 19:35:10 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:49:52 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,17 @@ int	print_map(t_mlx *mlx)
 	return (0);
 }
 
+void	*xpm_to_img(void *mlx, char *file, int *w, int *h)
+{
+	int		fd;
+
+	fd = open(file, O_RDONLY);
+	close(fd);
+	if (fd < 0)
+		exit_msg("error, some sprites cannot be found");
+	return (mlx_xpm_file_to_image(mlx, file, w, h));
+}
+
 t_sprites	*load_sprites(t_mlx *mlx)
 {
 	t_sprites	*sprite;
@@ -74,14 +85,16 @@ t_sprites	*load_sprites(t_mlx *mlx)
 	int			size_y;
 
 	sprite = malloc(sizeof (t_sprites));
+	if (!sprite)
+		exit_msg("error : unexpected malloc failure");
 	sprite->player = mlx_xpm_file_to_image(mlx->serv, PLAYER,
 			&sprite->s_tile_x, &sprite->s_tile_y);
-	sprite->item = mlx_xpm_file_to_image(mlx->serv, ITEM, &size_x, &size_y);
-	sprite->item1 = mlx_xpm_file_to_image(mlx->serv, ITEM1, &size_x, &size_y);
-	sprite->exit = mlx_xpm_file_to_image(mlx->serv, EXIT, &size_x, &size_y);
-	sprite->enemy = mlx_xpm_file_to_image(mlx->serv, ENEMY, &size_x, &size_y);
-	sprite->wall = mlx_xpm_file_to_image(mlx->serv, WALL, &size_x, &size_y);
-	sprite->ground = mlx_xpm_file_to_image(mlx->serv, FLOOR, &size_x, &size_y);
+	sprite->item = xpm_to_img(mlx->serv, ITEM, &size_x, &size_y);
+	sprite->item1 = xpm_to_img(mlx->serv, ITEM1, &size_x, &size_y);
+	sprite->exit = xpm_to_img(mlx->serv, EXIT, &size_x, &size_y);
+	sprite->enemy = xpm_to_img(mlx->serv, ENEMY, &size_x, &size_y);
+	sprite->wall = xpm_to_img(mlx->serv, WALL, &size_x, &size_y);
+	sprite->ground = xpm_to_img(mlx->serv, FLOOR, &size_x, &size_y);
 	return (sprite);
 }
 
