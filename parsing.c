@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:23:39 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/26 17:17:27 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:06:05 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,5 @@ t_map	*parsing(char *map_name)
 	check_limit_line(map->grid[map->nb_tiles_y - 1]);
 	close(map_fd);
 	find_player(map);
-	printf("\n\n");//================debug
 	return (map);
 }

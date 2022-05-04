@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:02:56 by tmongell          #+#    #+#             */
-/*   Updated: 2022/04/26 17:14:17 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:17:48 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ t_map	*map_init(void)
 char	*handle_eol(char *line)
 {
 	char	*new_line;
-	int 	len;
+	int		len;
 	int		i;
 
 	len = ft_strlen(line);
 	if (line[len - 1] == '\n')
 		return (line);
 	new_line = malloc(len + 2 * sizeof (char));
-	if(!new_line)
+	if (!new_line)
 		exit_msg("error : unplaned malloc error");
 	i = 0;
 	while (line[i])
