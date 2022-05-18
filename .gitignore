@@ -1,0 +1,11 @@
+ideas_vrac
+knowledge_base/*
+PoC/*
+*.swp
+*.dSYM
+.DS_store
+library/libft/libft.a
+library/ft_printf/libftprintf.a
+library/get_next_line/libgnl.a
+so_long
+*.o
