@@ -6,11 +6,11 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 14:43:51 by tmongell          #+#    #+#             */
-/*   Updated: 2022/05/03 14:27:43 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:26:51 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"lib_printf.h"
+#include"libftprintf.h"
 
 int	ft_printstr(char *str)
 {

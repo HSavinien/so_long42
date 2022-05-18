@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 20:12:05 by tmongell          #+#    #+#             */
-/*   Updated: 2022/05/04 18:59:12 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:24:24 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //includes    ------------------------------------------------------    includes
 
 # include "library/libft/libft.h"
-# include "library/printf/libftprintf.h"
+# include "library/ft_printf/libftprintf.h"
 # include "library/get_next_line/get_next_line.h"
 # include "library/key_code.h"
 # include <mlx.h>

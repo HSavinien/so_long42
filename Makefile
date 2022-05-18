@@ -20,7 +20,7 @@ MLXINCLUDES	=	-I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL 
 
 LIBFT		=	-L./library/libft -lft
 
-PRINTF		=	-L./library/printf -lftprintf
+PRINTF		=	-L./library/ft_printf -lftprintf
 
 GNL			=	-L./library/get_next_line -lgnl
 
@@ -42,7 +42,7 @@ libft:
 	@make -s -C library/libft
 	@echo "\033[33mbuilding requiered library : libft\033[0m"
 printf:
-	@make -s -C library/printf
+	@make -s -C library/ft_printf
 	@echo "\033[33mbuilding requiered library : printf\033[0m"
 gnl:
 	@make -s	-C library/get_next_line
@@ -57,16 +57,18 @@ clean:
 	@rm -rf ${NAME}.dSYM
 	@echo "\033[32mobject file succesfuly removed\033[m"
 	@make -s -C library/libft clean
-	@make -s -C library/printf clean
+	@make -s -C library/ft_printf clean
 	@make -s -C library/get_next_line clean
 
 fclean:	clean
 	@rm -f ${NAME}
 	@echo "\033[32mexecutable succesfully removed\033[m"
 	@make -s -C library/libft fclean
-	@make -s -C library/printf fclean
+	@make -s -C library/ft_printf fclean
 	@make -s -C library/get_next_line fclean
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+bonus:	${NAME}
+
+.PHONY:	all clean fclean re bonus
