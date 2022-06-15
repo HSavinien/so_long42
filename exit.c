@@ -6,7 +6,7 @@
 /*   By: tmongell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:59:17 by tmongell          #+#    #+#             */
-/*   Updated: 2022/05/04 19:00:03 by tmongell         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:12:13 by tmongell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	game_over(t_mlx *mlx)
 	int		pos_y;
 
 	img = mlx_xpm_file_to_image(mlx->serv, "sprites/lose.xpm", &img_x, &img_y);
+	if (!img)
+		exit_msg("you lose, but for some reason, game over screen isn't there");
 	pos_x = (mlx->size_x / 2) - (img_x / 2);
 	pos_y = (mlx->size_y / 2) - (img_y / 2);
 	mlx_put_image_to_window(mlx->serv, mlx->win, img, pos_x, pos_y);
@@ -62,6 +64,8 @@ int	winning(t_mlx *mlx)
 	int		pos_y;
 
 	img = mlx_xpm_file_to_image(mlx->serv, "sprites/win.xpm", &img_x, &img_y);
+	if (!img)
+		exit_msg("you won, but for some reason, victory screen is not there");
 	pos_x = (mlx->size_x / 2) - (img_x / 2);
 	pos_y = (mlx->size_y / 2) - (img_y / 2);
 	mlx_put_image_to_window(mlx->serv, mlx->win, img, pos_x, pos_y);
