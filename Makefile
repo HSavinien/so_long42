@@ -32,7 +32,8 @@ NAME		=	so_long
 
 all:	${NAME}
 
-${NAME}:	${OBJS} library
+${NAME}:	${OBJS} 
+	@make -s library
 	@${CC} ${CFLAGS} -o ${NAME} ${MLXINCLUDES} ${LIB} ${OBJS}
 	@echo "\033[32mprogram succesfuly compiled\033[m"
 
